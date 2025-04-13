@@ -9,7 +9,7 @@ import Footer from './Components/Footer';
 
 createRoot(document.getElementById('root')).render(
   <CartProvider> 
-    <Router>
+    <Router basename="/myntra-clone">
       <div className='h-full bg-slate-200'>
         <Header />
         <Routes>
