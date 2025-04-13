@@ -2,75 +2,85 @@ import React from "react";
 import { useCart } from "../Home/cartContext";
 
 function AddToCart() {
-    const { addToCart ,cartItems, removeFromCart , decreaseQuantity} = useCart();
-    const subtotal = cartItems.reduce((acc, item) => acc + item.price*item.quantity, 0);
-    const deliveryFee = 50;
-    const total = subtotal + deliveryFee;
+  const { addToCart, cartItems, removeFromCart, decreaseQuantity } = useCart();
+  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const deliveryFee = 50;
+  const total = subtotal + deliveryFee;
 
-    return (
-        <div className="text-black bg-slate-200 h-full w-full pt-[100px] overflow-x-hidden ">
-            <div className="py-20 px-20">
-                <h1 className="text-3xl text-center py-2 px-3 font-bold text-red-500">My Cart</h1>
+  return (
+    <div className="text-black bg-slate-200 min-h-screen pt-[80px] px-4 md:px-20">
+      <h1 className="text-2xl md:text-3xl text-center py-4 font-bold text-red-500">My Cart</h1>
 
-                <div className="border-b-2 border-red-500">
-                    <div className="w-full flex bg-red-400 px-2 py-1 text-xl">
-                        <h1 className="w-[55%]">Product</h1>
-                        <h1 className="w-[20%]">Quantity</h1>
-                        <h1 className="w-[25%] text-right">SubTotal</h1>
-                    </div>
+      {/* Cart Header */}
+      <div className="hidden md:flex border-b-2 border-red-500 bg-red-400 px-2 py-2 text-lg font-semibold">
+        <div className="w-[55%]">Product</div>
+        <div className="w-[20%]">Quantity</div>
+        <div className="w-[25%] text-right">SubTotal</div>
+      </div>
 
-                    {/* Map over cart items */}
-                    {cartItems.map((item, index) => (
-                        <div className="bg-white flex border-b" key={item.id || index}>
-                            <div className="w-[55%] py-2 px-2 flex space-x-2">
-                                <img src={item.img} className="w-[100px] bg-slate-200" alt={item.name} />
-                                <div>
-                                    <h1 className="font-bold py-1">{item.name}</h1>
-                                    <h1 className="font-medium text-gray-800 py-1">Price: Rs.{item.price}</h1>
-                                    <button
-                                        className="text-red-600 py-1 font-medium cursor-pointer hover:text-red-700"
-                                        onClick={() => removeFromCart(item.id)}>Remove </button>
-                                </div>
-                                <div className="justify-center text-right w-[60%] py-7 space-x-1">
-                                    <button className="w-30 font-bold text-xl cursor-pointer text-white bg-blue-500"
-                                    onClick={()=>addToCart(item)}>+</button>
-                                    <button className="w-30 font-bold text-xl cursor-pointer text-white bg-red-500"
-                                    onClick={()=>decreaseQuantity(item.id)}>-</button>
-                                </div>
-                            </div>
-                            <div className="w-[45%]">
-                                <div className="flex py-4">
-                                    <div className="pt-5 w-[50%]">
-                                        <span className="border-2 border-gray-400 py-2 px-4">{item.quantity}</span>
-                                    </div>
-                                    <div className="text-right w-[50%] py-8 px-3">
-                                        Rs.{item.price} X {item.quantity}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Price Summary */}
-                <div className="w-[45%] float-end bg-white py-2 px-3 mb-5 flex">
-                    <div className="w-[50%] flex flex-col">
-                        <span className="py-1 px-3">SubTotal</span>
-                        <span className="py-1 px-3">Delivery Fee</span>
-                        <span className="py-1 px-3 font-semibold">Total</span>
-                    </div>
-                    <div className="w-[50%] flex text-end flex-col">
-                        <span className="py-1 px-2">Rs.{subtotal}</span>
-                        <span className="py-1 px-2">Rs.{deliveryFee}</span>
-                        <span className="py-1 px-2 font-semibold">Rs.{total}</span>
-                        <button className="bg-red-500 text-xl text-white rounded-3xl py-1 mt-2">
-                            Proceed to checkout
-                        </button>
-                    </div>
-                </div>
+      {/* Cart Items */}
+      {cartItems.map((item, index) => (
+        <div key={item.id || index} className="bg-white border-b p-3 md:flex md:items-center">
+          <div className="md:w-[55%] flex flex-col md:flex-row space-x-0 md:space-x-3">
+            <img src={item.img} className="w-24 h-24 object-cover bg-slate-200 mx-auto md:mx-0" alt={item.name} />
+            <div className="mt-2 md:mt-0">
+              <h2 className="font-bold">{item.name}</h2>
+              <p className="text-gray-700">Price: Rs.{item.price}</p>
+              <button
+                className="text-red-600 mt-1 text-sm hover:underline"
+                onClick={() => removeFromCart(item.id)}
+              >
+                Remove
+              </button>
             </div>
+          </div>
+
+          {/* Quantity Controls */}
+          <div className="flex items-center justify-between md:w-[45%] mt-4 md:mt-0">
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => decreaseQuantity(item.id)}
+                className="bg-red-500 text-white px-2 py-1 rounded text-xl"
+              >
+                -
+              </button>
+              <span className="px-3 py-1 border border-gray-300">{item.quantity}</span>
+              <button
+                onClick={() => addToCart(item)}
+                className="bg-blue-500 text-white px-2 py-1 rounded text-xl"
+              >
+                +
+              </button>
+            </div>
+            <div className="text-right font-semibold">
+              Rs.{item.price} x {item.quantity}
+            </div>
+          </div>
         </div>
-    );
+      ))}
+
+      {/* Price Summary */}
+      <div className="bg-white p-4 mt-6 md:w-[50%] md:ml-auto rounded-md shadow-md">
+        <h2 className="text-xl font-semibold mb-4">Price Summary</h2>
+        <div className="flex justify-between py-1">
+          <span>SubTotal</span>
+          <span>Rs.{subtotal}</span>
+        </div>
+        <div className="flex justify-between py-1">
+          <span>Delivery Fee</span>
+          <span>Rs.{deliveryFee}</span>
+        </div>
+        <div className="flex justify-between py-1 font-bold">
+          <span>Total</span>
+          <span>Rs.{total}</span>
+        </div>
+        <button className="w-full mt-4 bg-red-500 text-white py-2 rounded-xl font-semibold">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default AddToCart;
+
