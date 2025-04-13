@@ -63,7 +63,7 @@ function Home() {
               <span>| 400</span>
             </div>
           </div>
-          <div className='mt-2 font-medium  text-black text-left w-full px-3'>Acer Aspire
+          <div className='mt-2 font-medium  text-black text-left w-full px-3'>Acer Asp
             <br />
             Rs. 45000
             <span className="text-sm text-gray-500 line-through ml-2">₹60000</span>
