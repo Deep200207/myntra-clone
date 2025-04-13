@@ -1,14 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 function Footer() {
     return (
         <div className='bg-slate-100 text-black'>
-            <div className='grid grid-cols-4 py-20 px-15'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 py-20 px-4 sm:px-6 md:px-10'>
+                {/* Online Shopping Section */}
                 <div>
-                    <div>
-                        <h1 className='font-semibold text-sm py-5'>ONINE SHOPPING</h1>
-                    </div>
-                    <div className='flex flex-col text-slate-700'>
+                    <h1 className='font-semibold text-sm py-5'>ONLINE SHOPPING</h1>
+                    <div className='flex flex-col text-slate-700 space-y-2'>
                         <span>Men</span>
                         <span>Women</span>
                         <span>Kids</span>
@@ -19,11 +18,11 @@ function Footer() {
                         <span>Gift cards</span>
                     </div>
                 </div>
+
+                {/* Customer Policies Section */}
                 <div>
-                    <div>
-                        <h1 className='font-semibold text-sm py-5'>CUSTOMER POLICIES</h1>
-                    </div>
-                    <div className='flex flex-col text-slate-700'>
+                    <h1 className='font-semibold text-sm py-5'>CUSTOMER POLICIES</h1>
+                    <div className='flex flex-col text-slate-700 space-y-2'>
                         <span>Customer</span>
                         <span>Contact</span>
                         <span>Help</span>
@@ -34,11 +33,11 @@ function Footer() {
                         <span>Order Details</span>
                     </div>
                 </div>
+
+                {/* Useful Links Section */}
                 <div>
-                    <div>
-                        <h1 className='font-semibold text-sm py-5'>USEFULL LINKS</h1>
-                    </div>
-                    <div className='flex flex-col text-slate-700'>
+                    <h1 className='font-semibold text-sm py-5'>USEFUL LINKS</h1>
+                    <div className='flex flex-col text-slate-700 space-y-2'>
                         <span>Blog</span>
                         <span>Careers</span>
                         <span>Site map</span>
@@ -47,17 +46,21 @@ function Footer() {
                         <span>Cleartip</span>
                     </div>
                 </div>
-                <div className='py-5'>
-                    <h1 className=' font-semibold'>100% ORIGINAL<span className='text-slate-700 font-normal'> gurantee for</span></h1>
-                    <h1 className='text-slate-700 font-normal'>all products at myntra.com</h1>
-                    <h1 className=' font-semibold pt-6'>Return within 14days<span className='text-slate-700 font-normal'> of</span></h1>
-                    <h1 className='text-slate-700 font-normal'>receiving your order</h1>
 
+                {/* Guarantee and Return Policy Section */}
+                <div className='py-5'>
+                    <h1 className='font-semibold'>
+                        100% ORIGINAL <span className='text-slate-700 font-normal'>guarantee for</span>
+                    </h1>
+                    <h1 className='text-slate-700 font-normal'>all products at myntra.com</h1>
+                    <h1 className='font-semibold pt-6'>
+                        Return within 14 days <span className='text-slate-700 font-normal'>of</span>
+                    </h1>
+                    <h1 className='text-slate-700 font-normal'>receiving your order</h1>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
 
-export default Footer
+export default Footer;
